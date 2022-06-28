@@ -24,6 +24,10 @@ app.use(express.static(__dirname, + '/views'))
 
 
 //Rotas GET
+
+app.get('/', function(req,res){
+   res.sendFile(path.join(__dirname,'/favicon.ico'))
+})
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/views/servidores.html'))
 })
