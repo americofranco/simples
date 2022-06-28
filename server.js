@@ -7,8 +7,8 @@ const path = require('path')
 
 //const port = 3000
 // para Heroku deploy use:
-const port = 80; //ou
-//const port = 8080;
+//const port = 80; //ou
+const port = 8080;
 
 
 
