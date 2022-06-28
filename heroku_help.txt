@@ -1,0 +1,61 @@
+ TUTORIAL GIT
+//Parte 1 Baixando arquivos git 
+
+$git clone git@github.com:pasta_raiz/repositorio.git
+
+$cd /pasta_git_clone
+
+
+//Parte 2 - Atualizar pasta git 
+$git init 
+
+$git add .
+
+$git commit -m "comentarios"
+
+$git push origin main
+
+TUTORIAL HEROKU
+
+//Parte 3- Atualizar heroku git
+
+->Importante tenha certeza que os NOVOS ARQUIVOS estarão dentro da pasta.
+
+
+$git init (inializar)
+
+$git add . (adicionar)
+
+$git commit -m "repositio Heroku" (salvar no repositorio)
+
+
+$heroku login (proceder com login)
+
+
+$heroku create <nome_respositorio)  ->criar pagina web.
+
+No respositorio criado selecionar ferramenta_de Banco_de _dados free
+
+-> retorno Para atualizar página já publicada.
+
+$git push heroku main ->publicar na web.
+
+
+$heroku open ->visualizar pagina final.
+
+TUTORIAL ATUALIZAÇÃO APP HEROKU  
+#Atualizar app Heroku e Corrigindo erros:
+
+1. $git add . # Sem $git init (ja iniciado anteriormente)
+2. $git commit -m "heroku" (salvar no repositorio)
+3. $git push heroku main ->publicar na web. #Sem $heroku login (ja iniciado na mesma sessão)
+
+#CONFIS APP HEROKU
+#Com a Pasta pronta, framework montado
+
+1. Criar requiriments.txt:
+$pip3 freeze > requiriments.txt # dentro da pasta do projeto.  Requiriments.txt, conunto das bibliotecas para rodar o projeto.
+
+2. Criar procfile:
+$editor procfile (sem extensão) com o conteúdo básico para inicializar app. Exemplo: python app = web: gunicorn wsgi:app   
+

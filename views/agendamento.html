@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<title> E.E. Americo Franco </title>
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/default.css">
+	<link rel="shortcut icon" href="/static/css/favicon.ico" />
+	
+	
+</head>
+<body>
+	
+<img src="/static/css/escola.jpeg"></img>
+
+<p><a href="https://sed.educacao.sp.gov.br/"> Secretaria Escolar Digital </a></h2>
+
+
+
+<h2> Servidores & Materiais. </h2>
+	
+<button><a href="/servidores">Servidores</a></button>
+<button><a href="/materiais">Materiais</a></button>
+<button><a href="/agendamento">Agendamentos</a></button>
+<button><a href="/devolucao">Devolução</a></button>
+<button><a href="/pesquisa">Pesquisa</a></button>
+
+<div class="items">	
+	<p action="/agendamento" id="agendamento" method="post">
+		<br>
+		<h2> Agendamentos.</h2>
+        <br>
+		<label>Descrição </label>
+		<input type="text" id="form_descricao" />
+
+		<label> Nome </label>
+        <input type="text" id="form_nome" />
+
+
+		<label>Local_Uso</label>
+		<input type="text" id="form_local_uso"  />
+
+		<label> Saida </label>
+		<input type="date" id="form_saida"/>
+        
+		<label> Previsão_Retorno</label>
+	    <input type="date" id="form_retorno"  />
+	<br>
+	<button type="submit"   onclick="agend()">Novo</button>
+	<button type="submit"  onclick="reset()">Resetar</button>
+	<hr>
+
+		
+	<hr>
+	
+	<!--saida html-->
+	
+	<table id="tabela">
+		<thead>
+			<tr>
+				<th>Descrição</th>
+			    <th>Nome</th>
+				<th>Local de Uso</th>
+				<th>Saida</th>
+				<th>Previsão Retorno</th>
+				</thead>
+		<tbody id="linha">
+			</tbody>
+	</table>
+</p>
+</div>
+	
+	<!-- Carregar arquivo JS depois de renderizado HTML-->
+<script  src="/script/agendamento.js"></script>
+</body>
+
+

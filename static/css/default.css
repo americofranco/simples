@@ -1,0 +1,79 @@
+ body,html {
+    padding: 50px;
+    background-color: whitesmoke;
+     background-image: static/css/escola;
+ }  
+img{
+    position: relative;
+ }
+
+
+h2 {
+    text-align: center;
+    font-size: 11px;
+
+} th, td{
+            padding: 10px 20px;
+            border: 1px solid #000;
+        }
+input{
+    height: 20px;
+     width: 160px;
+     display:inline;
+     align-items: center;
+      
+         }
+  
+  label{
+     height: 20px;
+     width: 50px;
+     display:inline;
+     
+  }
+  
+ 
+ div.items p{display: none}
+ div.items p:target {display: block}
+
+ button{
+    flood-opacity: 50%;
+    align-items: center;
+    height: 20px;
+    width: 120px;
+
+
+    
+ }
+
+textarea{
+    height: 40px;
+    width: 900px;
+
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 900px;
+    
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 1440px;
+  height: 900px;
+}
+.right table {
+  border: 1px solid white;
+  margin-left: 60px;
+}
+.right table thead tr th {
+  border: 1px solid white;
+  outline: solid white;
+}
+.right table thead tr th {
+  margin-right: 100px;
+}
+
+
+
+
