@@ -1,0 +1,14 @@
+CREDENCIAIS AMERICO FRANCO
+
+GMAIL: 
+login: americofranco086@gmail.com
+senha: a_franco
+
+GITHUB:
+login: americofranco
+senha: a_franco086
+email: americofranco086@gmail.com
+
+HEROKU:
+login: americofranco086gmail.com
+senha: a_franco086 

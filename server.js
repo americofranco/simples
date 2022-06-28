@@ -48,6 +48,10 @@ app.get('/materiais', function(req, res) {
     res.sendFile(path.join(__dirname, '/views/pesquisa.html'))
  })
 
+ app.get('/cadastroaluno', function(req,res){
+    res.sendFile(path.join(__dirname,'/views/cadastroalunov6.html'))
+ })
+
 
  //Rotas POST
 
