@@ -4,8 +4,8 @@ const app = express()
 const path = require('path')
 
 
-
-const port = 3000
+const port = process.env.PORT || 8080;
+//const port = 3000
 // para Heroku deploy use:
 //const port = 80; //ou
 //const port = 8080;
@@ -63,7 +63,7 @@ app.get('/materiais', function(req, res) {
 
 
 //Carregar app
-app.listen(process.env.port, () => {
+app.listen(port, () => {
     console.log(`App rodando em http://localhost:${port}.`)
   })
   
