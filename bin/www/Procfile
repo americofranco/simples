@@ -1,1 +1,1 @@
-web: ./bin/www npm start
+worker: ./bin/www npm start
