@@ -3,12 +3,10 @@ const bodyParser = require('body-parser')
 const app = express()
 const path = require('path')
 
-
+//deploy heroku
 const port = process.env.PORT || 8080;
+//servidor localhost 
 //const port = 3000
-// para Heroku deploy use:
-//const port = 80; //ou
-//const port = 8080;
 
 
 
