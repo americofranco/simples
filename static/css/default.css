@@ -1,16 +1,24 @@
- body,html {
+ html {
     padding: 50px;
     background-color: whitesmoke;
-     background-image: static/css/escola;
- }  
+     background-image: url(/static/css/aviso.jpeg);
+     background-size: 1500px;
+     }
 img{
     position: relative;
+    
+ }
+
+ h1{
+  text-align: center;
+  font-size: 22px;
+
  }
 
 
 h2 {
     text-align: center;
-    font-size: 11px;
+    font-size: 12px;
 
 } th, td{
             padding: 10px 20px;
@@ -32,9 +40,19 @@ input{
   }
   
  
- div.items p{display: none}
- div.items p:target {display: block}
+p{ 
+    text-align: left;
+    font-size: 12px;
+    display: inline;
+    position: relative;
+    left: 400px;
+}
+a{
+text-align: left;
+    font-size: 12px;
+    display: inline;
 
+}
  button{
     flood-opacity: 50%;
     align-items: center;

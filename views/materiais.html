@@ -13,43 +13,41 @@
 </head>
 <body>
 	
-<img src="/static/css/escola.jpeg"></img>
+	<a href="/servidores"><img src ="/static/css/escola.jpeg" alt="" id="imagem"></img></a>
+	<br>
+	<a href="https://sed.educacao.sp.gov.br/"> Secretaria Escolar Digital </a>
 
-<p><a href="https://sed.educacao.sp.gov.br/"> Secretaria Escolar Digital </a></h2>
 
-
-
-<h2> Servidores & Materiais. </h2>
-
-<button><a href="/cadastroaluno"> Alunos</a></button>
+<button><a href="/alunos"> Alunos</a></button>
 <button><a href="/servidores">Servidores</a></button>
 <button><a href="/materiais">Materiais</a></button>
 <button><a href="/agendamento">Agendamentos</a></button>
 <button><a href="/devolucao">Devolução</a></button>
-<button><a href="/pesquisa">Pesquisa</a></button>
+<button><a href="/pesquisa_materiais">Pesquisa</a></button>
 	
 
-<div class="items">
-	<p action="/materiais" id="materiais" method="post">
+
+	<Form action="/materiais" id="materiais" method="post">
 		<br>
-		<h2> Cadastro de Materiais.</h2>
+		<h1> CADASTRO DE MATERIAIS.</h1>
        <br>
 		<label> Ativo </label>
-		<input type="text"  id="form_ativo" />
+		<input type="text"  id="form_ativo" name="form_ativo" />
         
 		<label> Descrição </label>
-		<input type="text" id="form_descricao" />
+		<input type="text" id="form_descricao" name="form_descricao" />
 
         <label> Tipo Periférico</label>
-		<input type="text" id="form_periferico"  />
+		<input type="text" id="form_periferico" name="form_periferico" />
 
 	   <label> Avarias </label>
-		<input type="text" id="form_avarias"  />
-			
+		<input type="text" id="form_avarias"  name="form_avarias"/>
+		<br>	
 		<br>
-		<button type="submit"   onclick="mater()">Novo</button>
-	    <button type="submit"  onclick="reset()">Resetar</button>
-       		
+		<button type="submit"  class="btn btn-primary" onclick="inserir()">Novo</button>
+	    <button type="submit" class="btn btn-primary"  id="btn_reset" onclick="limpar()">Limpar_Campos</button>
+       	<br>
+		<br>	
 		<hr>
 
 		
@@ -65,8 +63,8 @@
 	    <tbody id="linha">
 		</tbody>
      </table>
-	</p>
-	</div>
+	</form>
+	
 	<!-- Carregar arquivo JS depois de renderizado HTML-->
 <script  src="/script/materiais.js"></script>
 </body>

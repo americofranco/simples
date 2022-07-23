@@ -1,18 +1,16 @@
 //Pagina Materiais.
-var ativo = document.getElementById("form_ativo");
-var descricao = document.getElementById("form_descricao");
-var periferico = document.getElementById("form_periferico");
-var avarias = document.getElementById("form_avarias");
+var materiais = [];
 
-async function reset() {
-  var table = document.getElementById("tabela"); // obtêm o elemento table
-  var rowCount = table.rows.length; // faz a contagem total linhas na table
-  for (var x = rowCount - 1; x > 0; x--) {
-    table.deleteRow(x); // deleta linha por linha
-  }
-}
+function inserir(){
 
-async function mater() {
+var f_ativo = window.document.getElementById("form_ativo").value;
+var f_descricao = window.document.getElementById("form_descricao").value;
+var f_periferico = window.document.getElementById("form_periferico").value;
+var f_avarias = window.document.getElementById("form_avarias").value;
+
+var inserir_materiais = verifica_dados(f_ativo);
+
+if(inserir_materiais == null){
   var table = document.getElementById("tabela");
   var row = table.insertRow(-1); // será adicionado na última linha
   var ativoCell = row.insertCell(0); //indice da linha. 
@@ -20,11 +18,38 @@ async function mater() {
   var perifericoCell = row.insertCell(2); //
   var avariasCell = row.insertCell(3); // 
   
-  ativoCell.innerHTML = ativo.value;
-  descricaoCell.innerHTML = descricao.value;
-  perifericoCell.innerHTML = periferico.value;
-  avariasCell.innerHTML = avarias.value;
+  ativoCell.innerHTML = f_ativo;
+  descricaoCell.innerHTML = f_descricao;
+  perifericoCell.innerHTML = f_periferico;
+  avariasCell.innerHTML = f_avarias;
+
+  window.alert("Material cadastrado.")
+  materiais.push({Ativo: f_ativo, Descricao: f_descricao, Periferico: f_periferico, Avarias: f_avarias});
   
+  }else{
+    window.alert("O Ativo nº:  " .concat(f_ativo," já exite como ", inserir_materiais.Descricao))
+  }
+
 }
 
-//export defaults ativo; descricao; periferico; avarias;
+function verifica_dados(numAtivo){
+  var ativ = materiais.find(function(p_ativo){
+    return p_ativo.Ativo === numAtivo
+  });
+  return ativ;
+}
+
+const btn = document.getElementById('btn_reset');
+
+btn.addEventListener('click', function limpar(event){
+  event.preventDefault();
+
+  const inputs = document.querySelectorAll('#form_ativo,#form_descricao,#form_periferico,#form_avarias')
+  inputs.forEach(input =>{
+    input.value ="";
+
+  });
+});
+
+//Exportar variaveis
+//export default materiais;

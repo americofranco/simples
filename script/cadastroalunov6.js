@@ -37,8 +37,9 @@ textoMatricula.innerHTML = jsMatricula;
 textoRA.innerHTML = jsRA;
 
 
-
+window.alert("Aluno registrado.")
 matriculas.push({Nome: jsNome, Matricula: jsMatricula, Registro: jsRA});
+
 }
 else
 {
@@ -56,3 +57,9 @@ var matr = matriculas.find(function(matricula) {return matricula.Matricula === n
 
 return matr;
 }
+
+function limpar(){
+    const inputs = document.querySelectorAll('#nome,#matricula,#ra');
+    inputs.forEach(input =>{
+      input.value ="";})
+  }
