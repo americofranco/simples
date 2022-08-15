@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<title> E.E. Americo Franco </title>
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/default.css">
+	<link rel="shortcut icon" href="/static/css/favicon.ico" />
+	
+	
+</head>
+<body>
+	
+<a href="/servidores"><img src ="/static/css/escola.jpeg" alt="" id="imagem"></img></a>
+<br>
+<a href="https://sed.educacao.sp.gov.br/"> Secretaria Escolar Digital </a>
+
+
+
+
+	 
+<button><a href="/alunos"> Alunos</a></button>
+<button><a href="/servidores">Servidores</a></button>
+<button><a href="/materiais">Materiais</a></button>
+<button><a href="/agendamento">Agendamentos</a></button>
+<button><a href="/devolucao">Devolução</a></button>
+
+	
+
+<form action="/pesquisa_servidores"  method="post">
+	<div class="pesquisa">
+		<br>
+		<h1> INFORMAÇÕES RÁPIDAS.</h1>
+		<br>
+		<label>Pesquisa</label>
+		<input type="text" name="form_busca" id="form_busca"/>
+		<br>
+		<br>
+		<button type="submit"   class="btn" id="btn_busca" name ="btn_busca" onclick="pesquisa()"> Pesquisar </button></p>
+		<br>
+		<br>
+		<hr>
+		<table  id="servidores">
+			<tr> 
+			<td>Matricula</td>
+			<td>Nome</td>
+			<td>Cargo</td>
+			<td>Telefone</td>
+			<td>Email</td> 
+			</tr>
+			<!-- Variaveis EJS-->
+			<% var servidores ; %>
+			<% servidores.forEach(servidores => { %> 
+				<tr>
+					<td> <%- servidores.Matricula %></td>
+					<td><%- servidores.Nome %> </td>
+					<td><%- servidores.Cargo %></td>
+					<td><%- servidores.Telefone %></td>
+					<td> <%- servidores.Email %></td>
+				</tr>
+				
+			<% }); %>
+		</table>
+
+	</div>
+  
+</form>
+
+	
+			
+		
+	
+
+
+	
+<!-- Carregar arquivo JS depois de renderizado HTML-->
+<script  src="/script/pesquisa_servidores.js"></script>
+</body>
+
+</html>

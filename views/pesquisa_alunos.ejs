@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<title> E.E. Americo Franco </title>
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/default.css">
+	<link rel="shortcut icon" href="/static/css/favicon.ico" />
+	
+	
+</head>
+<body>
+	
+<a href="/servidores"><img src ="/static/css/escola.jpeg" alt="" id="imagem"></img></a>
+<br>
+<a href="https://sed.educacao.sp.gov.br/"> Secretaria Escolar Digital </a>
+
+
+
+
+	 
+<button><a href="/alunos"> Alunos</a></button>
+<button><a href="/servidores">Servidores</a></button>
+<button><a href="/materiais">Materiais</a></button>
+<button><a href="/agendamento">Agendamentos</a></button>
+<button><a href="/devolucao">Devolução</a></button>
+
+	
+
+<form action="/pesquisa_alunos" id="pesquisa" method="post">
+   <br>
+	<h1> INFORMAÇÕES RÁPIDAS.</h1>
+	<br>
+	<label>Pesquisa</label>
+	<input type="text" name="form_busca" />
+	<br>
+	<br>
+
+	<button type="submit"   class="btn" id="btn_busca" name ="btn_busca" onclick="pesquisa()"> Pesquisar </button>  
+	<br>
+	<br>
+	<hr>
+	
+	<table>
+		    <tr>
+			<td> Nome</td>
+			<td> Matrícula</td>
+			<td> Registro</td>
+
+			</tr>
+			
+				<!-- Variaveis EJS-->
+				<% var alunos; %>
+				<% alunos.forEach(alunos => { %> 
+					<tr>
+						<td><%- alunos.Nome %> </td>
+						<td><%- alunos.Matricula %></td>
+						<td><%- alunos.Ra %></td>
+					</tr>
+					
+				<% }); %>
+		</table>
+	
+			
+		
+	</table>
+	</form>
+
+
+	
+<!-- Carregar arquivo JS depois de renderizado HTML-->
+<script  src="/script/pesquisa_alunos.js"></script>
+</body>
+
+</html>
