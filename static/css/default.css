@@ -32,9 +32,7 @@ input{
      align-items: center;
       
          }
-div.error h1.message{
-  color: crimson;
-}
+
 div.pesquisa input.form_busca{
   height: 20px;
   width: 400px;
@@ -53,7 +51,7 @@ p{
     font-size: 12px;
     display: inline;
     position: relative;
-    left: 400px;
+    
 }
 a{
 text-align: left;
@@ -98,6 +96,18 @@ table {
 }
 .right table thead tr th {
   margin-right: 100px;
+}
+
+
+#quadrado {
+  width: 100px;
+  height: 100px;
+  
+  margin:20px;
+  text-align:center;
+  display:inline-table;
+  border: 1px solid;
+  border-color: black;
 }
 
 

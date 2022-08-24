@@ -11,18 +11,7 @@ var f_avarias = window.document.getElementById("form_avarias").value;
 var inserir_materiais = verifica_dados(f_ativo);
 
 if(inserir_materiais == null){
-  var table = document.getElementById("tabela");
-  var row = table.insertRow(-1); // será adicionado na última linha
-  var ativoCell = row.insertCell(0); //indice da linha. 
-  var descricaoCell = row.insertCell(1); // 
-  var perifericoCell = row.insertCell(2); //
-  var avariasCell = row.insertCell(3); // 
-  
-  ativoCell.innerHTML = f_ativo;
-  descricaoCell.innerHTML = f_descricao;
-  perifericoCell.innerHTML = f_periferico;
-  avariasCell.innerHTML = f_avarias;
-
+ 
   window.alert("Material cadastrado.")
   materiais.push({Ativo: f_ativo, Descricao: f_descricao, Periferico: f_periferico, Avarias: f_avarias});
   

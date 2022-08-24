@@ -26,7 +26,10 @@ const Servidores = database.sequelize.define('servidores',{
         type: database.Sequelize.STRING(50),
         allowNull: false
     }
-});
+    
+}
+
+);
 
 //Criar Nova tabela. 
 //Servidores.sync({force: true });

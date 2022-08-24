@@ -1,16 +1,14 @@
 //Modulos essenciais APP
 const express = require('express'); //framework
 const body = require('body-parser'); //server side input html
-const bcrypt = require('bcrypt'); //criptogtafar senhas
-const jwt = require('jsonwebtoken');//gerar tokens
-const env = require('dotenv');//acessar strings criptografadas
 const alert =  require('alert'); //server side window.alert
-const nodemailer = require('nodemailer');//modulo de email
+const session = require('express-session'); //Autentication
 
 
-//Start express app
+//Start express app 
 const app = express();
 const path = require('path');
+
 
 
 //Modulos das tabelas SQL
@@ -27,13 +25,20 @@ const database = require('./connections/database');
 
 
 //porta servidor heroku
-//const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 //serivodor localhost
-const port = 3000;
+//const port = 3000;
 
 
 
-//body-parser: javascript HTML support
+//app express config
+app.use(session({
+   secret: 'secret',
+   resave: true,
+   saveUninitialized: true
+
+
+}));
 app.use(body.json())
 app.use(body.urlencoded({extended: false}))
 
@@ -47,7 +52,7 @@ app.use(express.static(__dirname, +'/connections'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-//Ativar Cae sensitive
+//Ativar Case sensitive
 app.set('case sensitive routing', true);
 
 
@@ -57,47 +62,55 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/views/comunicado.html'))
 
 });
-app.get('/login', function(req, res, next) {
+
+app.get('/menu', function(req, res){
+   if(req.session.loggedin){
+      res.render(`menu${req.session.useremail}`)
+      
+   }else(
+      res.render('login')
+   )
+   req.end();
+
+});
+
+app.get('/login', function( req, res) {
    res.render('login')
  
  });
 
-app.get('/email', function(req, res) {
-  res.render('email')
+app.get('/novo', function(req,res) {
+  res.render('novo')
 
 });
-app.get('/senha', function(req, res) {
-   res.render('senha')
- 
- });
 
  
-app.get('/servidores', function(req, res) {
+app.get('/servidores', function(req,res) {
    res.render('servidores')
 
 });
 
-app.get('/alunos', function(req,res){
+app.get('/alunos', function(req, res){
    res.render('alunos')
 });
 
-app.get('/materiais', function(req, res) {
+app.get('/materiais', function(req,res) {
     res.render('materiais')
  })
 
- app.get('/agendamento', function(req, res) {
+ app.get('/agendamento', function(req,res) {
     res.render('agendamento')
  });
 
- app.get('/devolucao', function(req, res) {
+ app.get('/devolucao', function(req,res) {
     res.render('devolucao')
  });
 
- app.get('/pesquisa_servidores', function(req, res) {
-    Servidores.findAll().then(function(servidores){
-      res.render('pesquisa_servidores',{servidores: servidores})  
-       
-    })  
+ app.get('/pesquisa_servidores', function(req,res) {
+      Servidores.findAll().then(function(servidores){
+       res.render('pesquisa_servidores',{servidores: servidores})
+      });  
+    
     });
         
      
@@ -118,8 +131,8 @@ app.get('/materiais', function(req, res) {
    });
       
    app.get('/pesquisa_agendamento', function(req, res) {
-      Agendamento.findAll().then(function(agendamento){
-         res.render('pesquisa_agendamento', {agendamento: agendamento})
+      Agendamento.findAll().then(function(agendamentos){
+         res.render('pesquisa_agendamento', {agendamentos: agendamentos})
        })
       
    });
@@ -147,7 +160,7 @@ app.post('/Servidores', function(req, res){
       Email: req.body.form_email
       
    }).then(function(){
-      res.render('servidores')
+      console.log('ok')
       
    }).catch(function(error){
       res.render('error',{error: error})
@@ -162,7 +175,7 @@ app.post('/Servidores', function(req, res){
          
       }).then(function(){
          console.log('Aluno gravado.')
-         alert('Aluno Registrado.')
+         
 
 
       }).catch(function(error){
@@ -180,7 +193,7 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Material Gravado')
-         alert('Material Registrado.')
+        
          
 
       }).catch(function(error){
@@ -199,7 +212,7 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Agendamento Gravado')
-         alert('Agendamento Realizado.')
+        
          
 
       }).catch(function(error){
@@ -217,7 +230,7 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Devolução Gravada')
-         alert('Devolucação')
+        
       
 
       }).catch(function(error){
@@ -228,10 +241,10 @@ app.post('/Servidores', function(req, res){
 
    //Pesquisas
    app.post('/pesquisa_servidores', function(req, res) {
-      Servidores.findAll({
+      Servidores.findAll({ 
          where:{
-            //Nome: `%${req.body.form_busca}%`
-            Nome: req.body.form_busca
+             //Nome: %${req.body.form_busca}            
+             Nome: req.body.form_busca
                       
       }}).then(function(servidores){
          res.render('pesquisa_servidores',{servidores: servidores})
@@ -257,7 +270,7 @@ app.post('/Servidores', function(req, res){
   });
 
   app.get('/pesquisa_materiais', function(req,res){
-   Materiais.findOne({
+   Materiais.findAll({
      where: {
         Descricao: req.body.form_busca
      }}).then(function(materiais){
@@ -270,11 +283,11 @@ app.post('/Servidores', function(req, res){
 });
 
 app.post('/pesquisa_agendamento', function(req,res){
-   Agendamento.findOne({
+   Agendamento.findAll({
      where: {
         Descricao:  req.body.form_busca
-     }}).then(function(agendamento){
-      res.render('pesquisa_agendamento',{agendamento: agendamento})
+     }}).then(function(agendamentos){
+      res.render('pesquisa_agendamento',{agendamentos: agendamentos})
 
    }).catch(function(error){
     res.render('error',{error: error})
@@ -283,7 +296,7 @@ app.post('/pesquisa_agendamento', function(req,res){
 });
 
 app.post('/pesquisa_devolucao', function(req,res){
-   Devolucao.findOne({
+   Devolucao.findAll({
      where: {
         Descricao: req.body.form_busca
      }}).then(function(devolucao){
@@ -296,80 +309,59 @@ app.post('/pesquisa_devolucao', function(req,res){
 });
 
  //autenticação
- app.post('/login', async function(req, res) {
-     //Checar se o usuáio existe.
-   let user =  await Login.findOne({where: {Email: req.body.f_email, Senha: req.body.f_senha}});
-   if(user){
-      const senha_valida =  await bcrypt.compare(req.body.f_senha, user.Senha);
-      if(senha_valida){
-         token = jwt.sign({"Email": user.Email,"Senha": user.Senha}.process.env.SECRET);
-          res.render('alunos',{token: token});
+ app.post('/login',  function(req, res) {
+   //Checar se o usuáio existe.
+   let useremail = req.body.f_email;
+   let usersenha = req.body.f_senha;
+   
+   Login.findAll({
+     where:{
+      Email: useremail,
+      Senha: usersenha }}).then(function(results){
+        if(results.length > 0){
+            req.session.loggedin = true;
+            req.session.useremail = useremail;
+            res.render('menu');
+         }else{
+            res.render('login');
+         }
+        
+      }).catch(function(error){
+         res.render('error',{error: error})
+
+      })
+  
+
+ });         
          
-      }else{
-        res.render('login');
-      }
-   }else{         
-         res.render('login');
-            }
-         
-         });
 
    
-app.post('/email', function(req, res){
-   //Objeto email.
-   let input_email =  {
-         Email: req.body.f_send_email
-         };
-         console.log(input_email);
-   
-       // Enviar email
-       let transporter =  nodemailer.createTransport({
-           service: "hotmail",
-           auth:{
-           user: "americofranco086@outlook.com",
-           pass: "a_franco"
-           }
+app.post('/novo',  function(req, res){
+   //Objeto novo usuario
+     let input_novo =  {
+         Email: req.body.f_send_email,
+         Senha: req.body.f_confirme_nova_senha
+   }
+      console.log(input_novo);
+      Login.create(input_novo);
        
-       });
-       
-       let mailOptions = {
-         from: 'americofranco086@outlook.com',
-         to: `${input_email}`,
-         subject: 'Confirmação de Login Plataforma CRSE - Americo Franco',
-         text: 'Para completar seu cadastro CRIE sua senha',
-         html:' <a href="/senha"> aqui </a>'         
-       
-       };       
-      transporter.sendMail(mailOptions)
-       .then(()=> alert('Email enviado'))
-       .catch((error) => console.log(error))
-       .finally(()=>  Login.create(input_email));
-
-      
+   return res.render('login');   
         
 });
 
-app.post('/senha', function(req, res){
-      const chave = bcrypt.genSalt(10);
-      let senha = {       
-      Senha: req.body.f_senha,
-      Token: bcrypt.hash(req.body.f_confirme_nova_senha, chave)
-    };
-    const criar_senha = Login.create(senha);
-    return criar_senha, res.render('login')
-
-   });      
-   
+  
 
 //Carregar app
 //banco de dados sem sobrescrita;
-database.sequelize.sync().then((req)=> {
+
+   database.sequelize.sync().then(()=> {
 // banco de dados com sobrescrita;
 //database.sequelize.sync({force: true}).then((req)=> {
    app.listen(port, () => {
       console.log(`App rodando com banco de dados carregado em http://localhost:${port}.`);
-      alert(`App rodando com banco de dados carregado em http://localhost:${port}.`)
-    })
-       }).catch((error) => {
-           console.log(error)
-           });
+     
+    });
+       }).catch((error)=>
+       console.log(error)
+       );
+     

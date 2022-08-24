@@ -10,11 +10,7 @@ const Login = database.sequelize.define('logins',{
          },
     Senha:{
         type: database.Sequelize.STRING(20),
-          },
-    Token:{
-        type: database.Sequelize.STRING(50)
-
-    }
+          }
 
 });
 

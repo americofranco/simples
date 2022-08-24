@@ -46,13 +46,13 @@
 		
 		   <!--saida html-->
 		   <table id="tabela">
-			<thead>
-					<th>Material</th>
-					<th>None</th>
-					<th>Conservação</th>
-					<th>Periodo_Carencia</th>
-					<th>Previsão Retorno</th>
-				</thead>
+			<tr>
+					<td>Material</td>
+					<td>None</td>
+					<td>Conservação</td>
+					<td>Periodo_Carencia</td>
+					<td>Previsão Retorno</td>
+				</tr>
 					<!-- Variaveis EJS-->
 				<% var devolucao; %>
 				<% devolucao.forEach(devolucao => { %> 
@@ -65,13 +65,7 @@
 					
 				<% }); %>			   
 			</table>
-			<% var error.message; %>
-			<%if(devolucao == null){%>
-				<% devolucao = "Sem Elementos." %>
-				<%}else{%>
-			<h1 id="message"><%= error.message %></h1>
-			   <%}%>
-
+			
 	</div>
   
 </form>

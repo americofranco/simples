@@ -1,10 +1,10 @@
-let user = {
+let data_user = {
     Email:  window.document.getElementById('form_email').value,
     Senha: window.document.getElementById('form_senha').value
     
 };
 function consultar(){
-    if(user == true) {
+    if(data_user == true) {
         window.alert('Usuario Autorizado.');
     
     }else {

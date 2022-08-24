@@ -2,9 +2,7 @@ let servidores = [];
 
  function pesquisa(){
      var f_servidores = window.document.getElementById("form_busca").value;
-     
-
-     
+          
      if(servidores == null){
         var table = document.getElementById("servidores");
         var row = table.insertRow(-1); // será adicionado na última linha
@@ -15,7 +13,7 @@ let servidores = [];
         servidores.push({F_Servidores: f_servidores});
  
     }  
-      
+  
   };
 
  
