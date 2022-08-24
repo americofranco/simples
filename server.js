@@ -1,4 +1,5 @@
 //Modulos essenciais APP
+<<<<<<< HEAD
 const express = require('express'); //framework
 const body = require('body-parser'); //server side input html
 const alert =  require('alert'); //server side window.alert
@@ -11,6 +12,15 @@ const path = require('path');
 
 
 
+=======
+const express = require('express')
+const body = require('body-parser')
+const app = express()
+const path = require('path')
+let alert =  require('alert')
+
+
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 //Modulos das tabelas SQL
 const Login = require('./connections/Login')
 const Servidores = require('./connections/Servidores')
@@ -18,6 +28,7 @@ const Alunos = require('./connections/Alunos')
 const Materiais = require('./connections/Materiais')
 const Agendamento = require('./connections/Agendamento')
 const Devolucao = require('./connections/Devolucao')
+<<<<<<< HEAD
 
 //Diretorio de models.
 const database = require('./connections/database');
@@ -29,7 +40,11 @@ const port = process.env.PORT || 8080;
 //serivodor localhost
 //const port = 3000;
 
+=======
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 
+//Diretorio de models.
+const database = require('./connections/database')
 
 //app express config
 app.use(session({
@@ -37,8 +52,18 @@ app.use(session({
    resave: true,
    saveUninitialized: true
 
+//porta servidor heroku
+//const port = process.env.PORT || 8080;
+//serivodor localhost
+const port = 3000
 
+<<<<<<< HEAD
 }));
+=======
+
+
+//body-parser: javascript HTML support
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 app.use(body.json())
 app.use(body.urlencoded({extended: false}))
 
@@ -56,11 +81,34 @@ app.set('views', './views');
 app.set('case sensitive routing', true);
 
 
+<<<<<<< HEAD
 
 //Rotas GET
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/views/comunicado.html'))
 
+=======
+//Rotas GET
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/views/comunicado.html'))
+
+});
+
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname, '/views/login.html'))
+
+});
+
+app.get('/validation', function(req, res) {
+   res.sendFile(path.join(__dirname, '/views/validation.html'))
+
+});
+
+ 
+app.get('/servidores', function(req, res) {
+   res.sendFile(path.join(__dirname, '/views/servidores.html'))
+
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 });
 
 app.get('/menu', function(req, res){
@@ -72,6 +120,7 @@ app.get('/menu', function(req, res){
    )
    req.end();
 
+<<<<<<< HEAD
 });
 
 app.get('/login', function( req, res) {
@@ -141,6 +190,40 @@ app.get('/materiais', function(req,res) {
          res.render('pesquisa_devolucao', {devolucao: devolucao})
        })
    });
+=======
+ app.get('/agendamento', function(req, res) {
+    res.sendFile(path.join(__dirname, '/views/agendamento.html'))
+ });
+
+ app.get('/devolucao', function(req, res) {
+    res.sendFile(path.join(__dirname, '/views/devolucao.html'))
+ });
+
+ app.get('/pesquisa_servidores', function(req, res) {
+    res.render('pesquisa_servidores')
+ });
+
+ app.get('/pesquisa_alunos', function(req, res) {
+   res.render('pesquisa_alunos')
+   });
+ app.get('/pesquisa_materiais', function(req, res) {
+      res.render('pesquisa_materiais')
+   });
+   app.get('/pesquisa_agendamento', function(req, res) {
+      res.render('pesquisa_agendamento')
+   });
+   app.get('/pesquisa_devolucao', function(req, res) {
+      res.render('pesquisa_devolucao')
+   });
+
+ app.get('/alunos', function(req,res){
+    res.sendFile(path.join(__dirname,'/views/alunos.html'))
+ });
+
+ app.get('/error', function(req,res){
+   res.sendFile(path.join(__dirname,'/views/error.html'))
+});
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 
  
 
@@ -151,7 +234,10 @@ app.get('/materiais', function(req,res) {
  //Rotas POST
  //Tabelas SQL
 app.post('/Servidores', function(req, res){
+<<<<<<< HEAD
     
+=======
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
    Servidores.create({
       Matricula: req.body.form_matricula,
       Nome: req.body.form_nome,
@@ -160,11 +246,21 @@ app.post('/Servidores', function(req, res){
       Email: req.body.form_email
       
    }).then(function(){
+<<<<<<< HEAD
       console.log('ok')
       
    }).catch(function(error){
       res.render('error',{error: error})
        })
+=======
+      console.log('Servidor Gravado')
+      
+   }).catch(function(error){
+      console.log('Erro: falha na escrita SQL!' + error)
+      alert("Erro: falha na escrita SQL!" + error)
+           
+   })
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
    });
 
    app.post('/Alunos', function(req,res){
@@ -175,12 +271,21 @@ app.post('/Servidores', function(req, res){
          
       }).then(function(){
          console.log('Aluno gravado.')
+<<<<<<< HEAD
          
 
 
       }).catch(function(error){
          res.render('error',{error: error})
        
+=======
+
+
+      }).catch(function(error){
+         console.log('Erro: falha na escrita SQL!' + error)
+         alert("Erro: falha na escrita SQL!" + error)
+              
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
       })
    });
 
@@ -193,12 +298,21 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Material Gravado')
+<<<<<<< HEAD
         
          
 
       }).catch(function(error){
          res.render('error',{error: error})
        
+=======
+         
+
+      }).catch(function(error){
+         console.log('Erro: falha na escrita SQL!' + error)
+         alert("Erro: falha na escrita SQL!" + error)
+              
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
       })
    });
 
@@ -212,11 +326,19 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Agendamento Gravado')
+<<<<<<< HEAD
         
          
 
       }).catch(function(error){
          res.render('error',{error: error})
+=======
+         
+
+      }).catch(function(error){
+         console.log('Erro: falha na escrita SQL!' + error)
+         alert("Erro: falha na escrita SQL!" + error)
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
               
       })
    });
@@ -230,16 +352,26 @@ app.post('/Servidores', function(req, res){
 
       }).then(function(){
          console.log('Devolução Gravada')
+<<<<<<< HEAD
         
       
 
       }).catch(function(error){
          res.render('error',{error: error})
+=======
+      
+
+      }).catch(function(error){
+         console.log('Erro: falha na escrita SQL!' + error)
+         alert("Erro: falha na escrita SQL!" + error)
+              
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
       })
 
    });
 
    //Pesquisas
+<<<<<<< HEAD
    app.post('/pesquisa_servidores', function(req, res) {
       Servidores.findAll({ 
          where:{
@@ -279,10 +411,50 @@ app.post('/Servidores', function(req, res){
    }).catch(function(error){
     res.render('error',{error: error})
    })
+=======
+   
+   app.post('/pesquisa_servidores', function(req,res){
+       Servidores.findOne({
+         where: {
+            Nome: req.body.form_busca
+         }}).then(function(list){
+            res.json(list)
+
+         }).catch(function(error){
+         alert("Erro na busca.", + error)
+      })
+          
+   });
+
+   app.post('/pesquisa_alunos', function(req,res){
+      Alunos.findOne({
+        where: {
+           Nome: req.body.form_busca
+        }}).then(function(list){
+           res.json(list)
+
+        }).catch(function(error){
+        alert("Erro na busca.", + error)
+     })
+         
+  });
+
+  app.post('/pesquisa_materiais', function(req,res){
+   Materiais.findOne({
+     where: {
+        Descricao: req.body.form_busca
+     }}).then(function(list){
+        res.json(list)
+
+     }).catch(function(error){
+     alert("Erro na busca.", + error)
+  })
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
       
 });
 
 app.post('/pesquisa_agendamento', function(req,res){
+<<<<<<< HEAD
    Agendamento.findAll({
      where: {
         Descricao:  req.body.form_busca
@@ -292,10 +464,22 @@ app.post('/pesquisa_agendamento', function(req,res){
    }).catch(function(error){
     res.render('error',{error: error})
    })
+=======
+   Agendamento.findOne({
+     where: {
+        Descricao: req.body.form_busca
+     }}).then(function(list){
+        res.json(list)
+
+     }).catch(function(error){
+     alert("Erro na busca.", + error)
+  })
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
       
 });
 
 app.post('/pesquisa_devolucao', function(req,res){
+<<<<<<< HEAD
    Devolucao.findAll({
      where: {
         Descricao: req.body.form_busca
@@ -330,8 +514,45 @@ app.post('/pesquisa_devolucao', function(req,res){
          res.render('error',{error: error})
 
       })
-  
+=======
+   Devolucao.findOne({
+     where: {
+        Descricao: req.body.form_busca
+     }}).then(function(list){
+        res.json(list)
 
+     }).catch(function(error){
+     alert("Erro na busca.", + error)
+  })
+      
+});
+   
+   //autenticação
+   app.post('/Login', function(req, res){
+      //Checar se o usuáio existe.
+      let user =  Login.findOne({
+          Email: req.body.form_email,
+          Senha: req.body.form_senha
+         })
+      if(user === true){
+         return res.redirect('/alunos')
+      }else{
+         return res.redirect('/validation')
+      }
+   });   
+    
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
+  
+   app.post('/validation' ,  function(req, res){
+      //inserir novo usuario, se não existir.
+        Login.create({
+           Email: req.body.form_email,
+           Senha: req.body.form_confirme_nova_senha
+
+        }).then(function(){
+           alert('Usuario Registrado, proceda com login.')
+
+<<<<<<< HEAD
  });         
          
 
@@ -365,3 +586,23 @@ app.post('/novo',  function(req, res){
        console.log(error)
        );
      
+=======
+        }).catch(function(error){ 
+        console.log('Erro de autenticação', + error)
+        alert('Erro de autnticação', + error)
+   })  
+                   
+   });
+
+   
+
+
+
+//Carregar app
+database.sequelize.sync().then((req)=> {
+   app.listen(port, () => {
+      console.log(`App rodando com banco de dados carregado em http://localhost:${port}.`)
+     
+    });
+});
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204

@@ -26,16 +26,23 @@ const Servidores = database.sequelize.define('servidores',{
         type: database.Sequelize.STRING(50),
         allowNull: false
     }
+<<<<<<< HEAD
     
 }
 
 );
+=======
+});
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 
 //Criar Nova tabela. 
 //Servidores.sync({force: true });
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
 module.exports = Servidores; 

@@ -1,0 +1,74 @@
+ TUTORIAL GIT
+ Ideal:
+ Instalar GIT windows 64bits
+ https://objects.githubusercontent.com/github-production-release-asset-2e65be/23216272/fb9b9d36-52dd-4e90-b36d-ef4320a89758?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220723%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220723T003950Z&X-Amz-Expires=300&X-Amz-Signature=b8047e4118be8b39684c59c3ad259b6a38dd6224a262f5e80006205ff2abdf8f&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=23216272&response-content-disposition=attachment%3B%20filename%3DGit-2.37.1-64-bit.exe&response-content-type=application%2Foctet-stream
+
+instalar nodeJS windows 64bits
+https://nodejs.org/dist/v16.16.0/node-v16.16.0-x86.msi
+ 
+
+
+
+
+//Parte 1 Baixando arquivos git 
+ 
+$git clone git@github.com:pasta_raiz/repositorio.git
+$git clone git@github.com:americofranco/simples.git
+$senha = w@nd3r2022
+
+$cd /pasta_git_clone
+
+
+//Parte 2 - Atualizar pasta git 
+$git init 
+
+$git add .
+
+$git commit -m "comentarios"
+
+$git push origin main
+
+TUTORIAL HEROKU
+
+//Parte 3- Atualizar heroku git
+
+->Importante tenha certeza que os NOVOS ARQUIVOS estarão dentro da pasta.
+
+
+$git init (inializar)
+
+$git add . (adicionar)
+
+$git commit -m "repositio Heroku" (salvar no repositorio)
+
+
+$heroku login (proceder com login)
+
+
+$heroku create <nome_respositorio)  ->criar pagina web.
+
+No respositorio criado selecionar ferramenta_de Banco_de _dados free
+
+-> retorno Para atualizar página já publicada.
+
+$git push heroku main ->publicar na web.
+
+
+$heroku open ->visualizar pagina final.
+
+TUTORIAL ATUALIZAÇÃO APP HEROKU  
+#Atualizar app Heroku e Corrigindo erros:
+
+1. $git add . # Sem $git init (ja iniciado anteriormente)
+2. $git commit -m "heroku" (salvar no repositorio)
+3. $git push heroku main ->publicar na web. #Sem $heroku login (ja iniciado na mesma sessão)
+
+#CONFIS APP HEROKU
+#Com a Pasta pronta, framework montado
+
+1. Criar requiriments.txt:
+$pip3 freeze > requiriments.txt # dentro da pasta do projeto.  Requiriments.txt, conunto das bibliotecas para rodar o projeto.
+
+2. Criar procfile:
+$editor procfile (sem extensão) com o conteúdo básico para inicializar app. Exemplo: python app = web: gunicorn wsgi:app   
+

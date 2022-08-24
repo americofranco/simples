@@ -13,8 +13,13 @@ let list = [];
         window.alert("Busca realizada com suceso.")
         list.push({List: f_list});
  
+<<<<<<< HEAD
     }
           
+=======
+    }  
+      
+>>>>>>> 3168eea5156a490fcdd796552241465973bb6204
   };
 
  
