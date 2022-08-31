@@ -26,9 +26,9 @@ const database = require('./connections/database');
 
 
 //porta servidor heroku
-//const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 //serivodor localhost
-const port = 5000;
+//const port = 5000;
 
 
 
