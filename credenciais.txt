@@ -4,6 +4,10 @@ GMAIL:
 login: americofranco086@gmail.com
 senha: a_franco
 
+HOTMAIL
+login: americofranco086@outlook.com
+senha; a_franco
+
 GITHUB:
 login: americofranco
 senha: a_franco086

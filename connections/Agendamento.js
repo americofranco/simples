@@ -14,10 +14,10 @@ const Agendamento = database.sequelize.define('agendamentos',{
         allowNull: false
     },
     Saida:{
-        type: database.Sequelize.DATE
+        type: database.Sequelize.DataTypes.INTEGER
     },
     Retorno:{
-        type: database.Sequelize.DATE
+        type: database.Sequelize.DataTypes.INTEGER
     }
 
 });

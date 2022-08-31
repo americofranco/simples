@@ -5,12 +5,12 @@
      background-size: 1500px;
      }
 img{
-<<<<<<< HEAD
+
    width: auto;
    height: auto;
-=======
+
     position: relative;
->>>>>>> 3168eea5156a490fcdd796552241465973bb6204
+
     
  }
 
@@ -55,11 +55,9 @@ p{
     font-size: 12px;
     display: inline;
     position: relative;
-<<<<<<< HEAD
-    
-=======
+
     left: 400px;
->>>>>>> 3168eea5156a490fcdd796552241465973bb6204
+
 }
 a{
 text-align: left;
@@ -110,10 +108,10 @@ table {
 #quadrado {
   width: 100px;
   height: 100px;
-  
+  font-size: larger;
   margin:20px;
   text-align:center;
-  display:inline-table;
+  display:inline-block;
   border: 1px solid;
   border-color: black;
 }

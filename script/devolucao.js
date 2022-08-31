@@ -10,19 +10,7 @@ function inserir(){
   var inserir_devolucao = verifica(f_descricao);
 
   if(inserir_devolucao == null){
-  var table = document.getElementById("tabela");
-  var row = table.insertRow(-1); // será adicionado na última linha
-  var descricaoCell = row.insertCell(0); //indice da linha. 
-  var nomeCell = row.insertCell(1); // 
-  var conservacaoCell = row.insertCell(2); //
-  var carenciaCell = row.insertCell(3); //
   
-  
-  descricaoCell.innerHTML = f_descricao;
-  nomeCell.innerHTML = f_nome;
-  conservacaoCell.innerHTML = f_conservacao;
-  carenciaCell.innerHTML = f_carencia;
-
   window.alert("Devolução Realizado.")
   devolucao.push({Descricao: f_descricao, Nome: f_nome, Conservacao: f_conservacao, Carencia: f_carencia})
   
