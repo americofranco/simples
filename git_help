@@ -41,6 +41,9 @@ $git push origin main
 UPLOAD DE ARQUIVOS HEROKU
 $git push heroku main
 
+FORÇAR UPLOAD DE ARQUIVOS HEROKU 
+$git push <LINK>.git main -f
+
 
 ##HEROKU##
 LOGIN NO HEROKU CLI
