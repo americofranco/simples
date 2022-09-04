@@ -24,18 +24,6 @@ if (matriculaCadastrada == null)
 
 
 
-let table = document.getElementById("tabela_aluno");
-let row = table.insertRow(-1);
-var textoNome = row.insertCell(0);
-var textoMatricula = row.insertCell(1);
-var textoRA = row.insertCell(2);
-
-
-
-textoNome.innerHTML = jsNome;
-textoMatricula.innerHTML = jsMatricula;
-textoRA.innerHTML = jsRA;
-
 
 window.alert("Aluno registrado.")
 matriculas.push({Nome: jsNome, Matricula: jsMatricula, Registro: jsRA});

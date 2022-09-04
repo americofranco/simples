@@ -55,3 +55,6 @@ $heroku open
 CRIAR NOVO PROJETO
 $heroku create <nome_projeto>
 
+LOG DE ERROS
+$heruko logs --tail
+

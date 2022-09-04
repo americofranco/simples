@@ -6,13 +6,13 @@ function inserir(){
   var f_nome = window.document.getElementById("form_nome").value;
   var f_conservacao = window.document.getElementById("form_conservacao").value;
   var f_carencia = window.document.getElementById("form_carencia").value;
-
+  var f_retorno = window.document.getElementById('form_retorno').value;
   var inserir_devolucao = verifica(f_descricao);
 
   if(inserir_devolucao == null){
   
   window.alert("Devolução Realizado.")
-  devolucao.push({Descricao: f_descricao, Nome: f_nome, Conservacao: f_conservacao, Carencia: f_carencia})
+  devolucao.push({Descricao: f_descricao, Nome: f_nome, Conservacao: f_conservacao, Carencia: f_carencia, Retorno: f_retorno})
   
 }else{
   window.alert("O Material " .concat(f_descricao," ja foi devolvido por ", inserir_devolucao.Nome, " no dia ", inserir_devolucao.Carencia));

@@ -26,9 +26,9 @@ const database = require('./connections/database');
 
 
 //porta servidor heroku
-const port = process.env.PORT || 8080;
+//const port = process.env.PORT || 8080;
 //serivodor localhost
-//const port = 5000;
+const port = 3000;
 
 
 
@@ -73,17 +73,19 @@ app.get('/sobre', function(req, res) {
    res.render('sobre');
 });
 
+app.get('/logout', function(req, res) {
+   res.render('logout');
+});
+
 
 app.get('/menu', function(req, res){
    if(req.session.loggedin){
-      res.render(`menu${req.session.useremail}`)
-      
+      res.render('menu')
    }else(
       res.render('login')
    )
-
-
 });
+
 
 app.get('/login', function( req, res) {
    res.render('login')
@@ -196,7 +198,7 @@ app.post('/Servidores', function(req, res){
    app.post('/Materiais', function(req, res){
       Materiais.create({
          Ativo: req.body.form_ativo,
-         Descricao: req.body.form_periferico,
+         Descricao: req.body.form_descricao,
          Periferico: req.body.form_periferico,
          Avarias: req.body.form_avarias
 
@@ -277,18 +279,7 @@ app.post('/Servidores', function(req, res){
          
   });
 
-     app.post('/pesquisa_alunos', function(req,res){
-      Alunos.findAll({
-        where: {
-           Nome: req.body.form_busca
-        }}).then(function(alunos){
-           res.render('alunos', {alunos: alunos})
-
-        }).catch(function(error){
-        res.render('error',{error: error})
-     })
-         
-  });
+ 
 
   app.post('/pesquisa_materiais', function(req,res){
    Materiais.findAll({
@@ -339,8 +330,11 @@ app.post('/pesquisa_devolucao', function(req,res){
    Login.findAll({
      where:{
       Email: useremail,
-      Senha: usersenha }}).then(function(results){
+      Senha: usersenha
+    }})
+    .then(function(results){
         if(results.length > 0){
+            
             req.session.loggedin = true;
             req.session.useremail = useremail;
             res.render('menu');
@@ -362,7 +356,7 @@ app.post('/pesquisa_devolucao', function(req,res){
 app.post('/novo',  function(req, res){
    //Objeto novo usuario
      let input_novo =  {
-         Email: req.body.f_send_email,
+         Email: req.body.f_email,
          Senha: req.body.f_confirme_nova_senha
    }
       console.log(input_novo);

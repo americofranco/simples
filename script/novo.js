@@ -6,8 +6,8 @@ function enviar(){
  
 
   if(novo == null){
- window.alert('Usuario Registrado')
- novo.push({Email: input_email, Senha: input_nova_senha});
+    window.alert('Usuario Registrado')
+    novo.push({Email: input_email, Senha: input_nova_senha});
   
 }};
   

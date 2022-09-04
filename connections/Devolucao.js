@@ -14,11 +14,11 @@ const Devolucao = database.sequelize.define('devolucaos',{
         allowNull: false
     },
     Carencia:{
-        type: database.Sequelize.DataTypes.INTEGER,
+        type: database.Sequelize.DATEONLY,
         allowNull: false
     },
     Retorno:{
-        type: database.Sequelize.DataTypes.INTEGER,
+        type: database.Sequelize.DATEONLY,
         allowNull: false
 
     }
