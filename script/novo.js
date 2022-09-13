@@ -1,6 +1,6 @@
  var novo = [];
 
-function enviar(){
+function registrar(){
   let input_email = window.document.getElementById('form_email').value;
   let input_nova_senha = window.document.getElementById('form_confirme_senha').value; 
  
@@ -10,7 +10,7 @@ function enviar(){
     novo.push({Email: input_email, Senha: input_nova_senha});
   
 }};
-  
+console.log(novo);
 
 
 

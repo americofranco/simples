@@ -1,4 +1,3 @@
-
 let results = [];
 function consultar(){
     let useremail = window.document.getElementById('form_email').value;
@@ -6,7 +5,6 @@ function consultar(){
 
     
         if (results != null){
-
            window.alert('Usuario Autorizado.');
            results.push({Email: useremail, Senha: usersenha})    
            
@@ -16,7 +14,6 @@ function consultar(){
 
 
      };
-     
    
 
    

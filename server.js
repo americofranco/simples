@@ -28,7 +28,7 @@ const database = require('./connections/database');
 //porta servidor heroku
 const port = process.env.PORT || 8080;
 //serivodor localhost
-//const port = 3000;
+//const port = 7000;
 
 
 
@@ -94,8 +94,7 @@ app.get('/login', function( req, res) {
 
  app.get('/novo', function( req, res) {
    res.render('novo')
- 
- });
+  });
 
 
 
@@ -320,9 +319,8 @@ app.post('/pesquisa_devolucao', function(req,res){
    })
       
 });
-
- //autenticação
- app.post('/login',  function(req, res) {
+//autenticação
+app.post('/login',  function(req, res) {
    //Checar se o usuáio existe.
    let useremail = req.body.f_email;
    let usersenha = req.body.f_senha;
@@ -333,7 +331,7 @@ app.post('/pesquisa_devolucao', function(req,res){
       Senha: usersenha
     }})
     .then(function(results){
-        if(results.length > 0){
+        if(results.length > 1){
             
             req.session.loggedin = true;
             req.session.useremail = useremail;
@@ -347,22 +345,20 @@ app.post('/pesquisa_devolucao', function(req,res){
 
       })        
 });
-   
-   
-  
-   
 
-   
+
 app.post('/novo',  function(req, res){
    //Objeto novo usuario
-     let input_novo =  {
-         Email: req.body.f_email,
-         Senha: req.body.f_confirme_nova_senha
-   }
-      console.log(input_novo);
-      Login.create(input_novo);
-       
-   return res.render('login');   
+     Login.create({
+      Email: req.body.f_email,
+      Senha: req.body.f_confirme_nova_senha
+
+     }).then(function(){
+      res.render('login')
+      console.log('Novo cadastro incluso.')
+     }).catch(function(error){
+      res.render('error',{error: error})
+     })
         
 });
 
